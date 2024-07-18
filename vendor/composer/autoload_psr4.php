@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Davidle\\Payshare\\' => array($baseDir . '/src'),
+    'Davidle90\\Payshare\\' => array($baseDir . '/src'),
 );
