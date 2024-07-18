@@ -7,7 +7,7 @@ class PayshareController extends Controller
 {
     public function index()
     {
-        return view('pages.public.payshare.index', [
+        return view('payshare::pages.public.index', [
         ]);
     }
 }
