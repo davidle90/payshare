@@ -1,0 +1,25 @@
+{
+    "name": "davidle/payshare",
+    "description": "bill split tracker",
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Davidle\\Payshare\\": "src/"
+        }
+    },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "Davidle90\\Payshare\\PayshareServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "david le"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
