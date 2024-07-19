@@ -13,22 +13,27 @@
 <div class="container mx-auto">
     <div class="w-4/5 mx-auto py-12 my-5">
 
-        <div class="flex justify-between mb-2">
-            <h2 class="text-xl font-semibold">{{ $group->name }}</h2>
-            <a href="" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add member</a>
-        </div>
-
-        <div class="mb-5">
-            <span class="font-semibold">Members</span>
-            <ul class="text-sm">
-                @foreach($members as $member)
-                    <li>{{ $member->name }}</li>
-                @endforeach
-            </ul>
+        <h2 class="text-2xl font-semibold text-center mb-5">{{ $group->name }}</h2>
+       
+        <div class="flex justify-between mb-5">
+            <div>
+                <a href="{{ route('payshare.index') }}" class="border px-3 py-1"><i class="fa-solid fa-arrow-left"></i> Back</a>
+            </div>
+            <div>
+                <span class="font-semibold">Members</span>
+                <ul class="text-sm">
+                    @foreach($members as $member)
+                        <li>{{ $member->name }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <div>
+                <a href="{{ route('payshare.members.create', ['group_id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add member</a>
+            </div>
         </div>
 
         <div class="flex justify-end mb-2">
-            <a href="" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add payment</a>
+            <a href="{{ route('payshare.payments.create', ['group_id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add payment</a>
         </div>
 
         <div class="relative overflow-x-auto rounded-lg mb-5">
@@ -42,7 +47,7 @@
                 </thead>
                 <tbody>
                     @foreach($payments as $payment)
-                        <tr class="cursor-pointer bg-white border-b">
+                        <tr class="cursor-pointer bg-white border-b go-to-url" data-url="{{ route('payshare.payments.edit', ['group_id' => $group->id, 'payment_id' => $payment->id]) }}">
                             <td class="px-6 py-4">{{ \Carbon\Carbon::parse($payment->date)->format('d M') }}</td>
                             <td class="px-6 py-4">{{ $payment->label }}</td>
                             <td class="px-6 py-4">
@@ -74,7 +79,7 @@
                 </thead>
                 <tbody>
                     @foreach($debts as $from => $to)
-                        <tr class="cursor-pointer bg-white border-b">
+                        <tr class="bg-white border-b">
                             <th class="px-6 py-4 text-xs text-gray-700 uppercase bg-gray-50">from {{ $from }}</th>
                             @foreach($debts[$from] as $to => $amount)
                                 <td>
@@ -107,4 +112,5 @@
 @endsection
 
 @section('scripts')
+    @include('payshare::includes.scripts.go-to-url')
 @endsection

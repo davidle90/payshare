@@ -13,7 +13,7 @@
 @endphp
 
 @section('content')
-    <h1 class="text-center">GROUP Create / Edit</h1>
+    <h1 class="text-center">MEMBER Create / Edit</h1>
 @endsection
 
 @section('scripts')
