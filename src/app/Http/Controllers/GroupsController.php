@@ -3,6 +3,8 @@
 use App\Http\Controllers\Controller;
 use Davidle90\Payshare\app\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 class GroupsController extends Controller
 {
@@ -62,16 +64,62 @@ class GroupsController extends Controller
 
     public function edit($id)
     {
-        
+        $group = Group::find($id);
+        return view('payshare::pages.public.groups.edit', [
+            'group' => $group
+        ]);
     }
 
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $input = [
+            'id' => $request->input('id'),
+            'name' => $request->input('name')
+        ];
+
+        DB::beginTransaction();
+
+        try {
+            
+            $group = Group::firstOrNew(['id' => $input['id']]);
+            $group->name = $input['name'];
+            $group->save();
+
+            DB::commit();
+
+            $response = [
+                'status' => 1,
+                'message' => 'Group has been saved.',
+                'redirect' => route('payshare.groups.edit', ['id' => $group->id])
+            ];
+
+        } catch(Exception $e) {
+
+            DB::rollBack();
+
+            $response = [
+                'status' => 0,
+                'message' => 'Something went wrong while saving group.'
+            ];
+        }
+
+        return response()->json($response);
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        
+        $id = $request->get('delete_id');
+        $group = Group::find($id);
+
+        $group->delete();
+
+        return response()->json([
+            'status' => 1,
+            'redirect' => route('payshare.index')
+        ]);
     }
 }

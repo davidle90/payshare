@@ -17,4 +17,5 @@
 @endsection
 
 @section('scripts')
+    @include('payshare::includes.scripts.form')
 @endsection

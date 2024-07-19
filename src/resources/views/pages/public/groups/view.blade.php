@@ -15,10 +15,7 @@
 
         <h2 class="text-2xl font-semibold text-center mb-5">{{ $group->name }}</h2>
        
-        <div class="flex justify-between mb-5">
-            <div>
-                <a href="{{ route('payshare.index') }}" class="border px-3 py-1"><i class="fa-solid fa-arrow-left"></i> Back</a>
-            </div>
+        <div class="flex justify-end mb-5">
             <div>
                 <span class="font-semibold">Members</span>
                 <ul class="text-sm">
@@ -27,14 +24,19 @@
                     @endforeach
                 </ul>
             </div>
-            <div>
-                <a href="{{ route('payshare.members.create', ['group_id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add member</a>
-            </div>
         </div>
 
-        <div class="flex justify-end mb-2">
-            <a href="{{ route('payshare.payments.create', ['group_id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add payment</a>
+        <div class="flex justify-between mb-3">
+            <div>
+                <a href="{{ route('payshare.index') }}" class="border px-3 py-1"><i class="fa-solid fa-arrow-left"></i> Back</a>
+            </div>
+            <div class="justify-end">
+                <a href="{{ route('payshare.payments.create', ['group_id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add payment</a>
+                <a href="{{ route('payshare.groups.edit', ['id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-gear"></i> Edit group</a>
+                <a href="{{ route('payshare.members.create', ['group_id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add member</a>
+            </div> 
         </div>
+        
 
         <div class="relative overflow-x-auto rounded-lg mb-5">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">

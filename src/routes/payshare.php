@@ -17,8 +17,8 @@ Route::post('projects/payshare/groups/delete', [GroupsController::class, 'delete
 
 Route::get('projects/payshare/groups/{group_id}/members/create', [MembersController::class, 'create'])->name('payshare.members.create');
 Route::get('projects/payshare/groups/{group_id}/members/edit/{member_id}', [MembersController::class, 'edit'])->name('payshare.members.edit');
-Route::post('projects/payshare/groups/{group_id}/members/store', [MembersController::class, 'store'])->name('payshare.members.store');
-Route::post('projects/payshare/groups/{group_id}/members/delete', [MembersController::class, 'delete'])->name('payshare.members.delete');
+Route::post('projects/payshare/groups/members/store', [MembersController::class, 'store'])->name('payshare.members.store');
+Route::post('projects/payshare/groups/members/delete', [MembersController::class, 'delete'])->name('payshare.members.delete');
 
 Route::get('projects/payshare/groups/{group_id}/payments/create', [PaymentsController::class, 'create'])->name('payshare.payments.create');
 Route::get('projects/payshare/groups/{group_id}/payments/edit/{payment_id}', [PaymentsController::class, 'edit'])->name('payshare.payments.edit');
