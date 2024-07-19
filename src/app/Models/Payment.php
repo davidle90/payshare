@@ -11,22 +11,29 @@ class Payment extends Model
 
     protected $fillable = [
         'group_id',
-        'member_id',
-        'total'
+        'label',
+        'total',
+        'date'
     ];
 
     protected $dates = [
         'created_at',
-        'updated_at'
+        'updated_at',
+        'date'
     ];
 
     public function group()
     {
-        return $this->belongsTo(Group::class, 'group_id', 'id');
+        return $this->belongsTo(Group::class);
     }
 
-    public function member()
+    public function contributors()
     {
-        return $this->belongsTo(Member::class, 'member_id', 'id');
+        return $this->hasMany(Contributor::class);
+    }
+
+    public function participants()
+    {
+        return $this->belongsToMany(Member::class, 'payment_participant');
     }
 }

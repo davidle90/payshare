@@ -5,12 +5,14 @@ namespace Davidle90\Payshare\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Group extends Model
+class Contributor extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'payment_id',
+        'member_id',
+        'amount'
     ];
 
     protected $dates = [
@@ -18,13 +20,13 @@ class Group extends Model
         'updated_at'
     ];
 
-    public function members()
+    public function payment()
     {
-        return $this->hasMany(Member::class);
+        return $this->belongsTo(Payment::class);
     }
 
-    public function payments()
+    public function member()
     {
-        return $this->hasMany(Payment::class);
+        return $this->belongsTo(Member::class);
     }
 }
