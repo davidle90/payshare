@@ -20,7 +20,7 @@
         <div class="w-4/5 mx-auto py-12 my-5">
             <h1 class="text-center">@if(isset($group)) {{ $group->name }} @else Create @endif</h1>
 
-            <a href="{{ route('payshare.index') }}" class="border px-3 py-1"><i class="fa-solid fa-arrow-left mb-5"></i> Back</a>
+            <a href="{{ route('payshare.groups.view', ['id' => $group->id]) }}" class="border px-3 py-1"><i class="fa-solid fa-arrow-left mb-5"></i> Back</a>
 
             <form id="onSaveForm" method="POST" action="{{ route('payshare.groups.store') }}" class="max-w-sm" autocomplete="off">
 
