@@ -19,13 +19,18 @@ class Member extends Model
         'updated_at'
     ];
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class, 'member_id', 'id');
-    }
-
     public function group()
     {
-        return $this->belongsTo(Group::class, 'group_id', 'id');
+        return $this->belongsTo(Group::class);
+    }
+
+    public function contributions()
+    {
+        return $this->hasMany(Contributor::class);
+    }
+
+    public function participations()
+    {
+        return $this->belongsToMany(Payment::class, 'payment_participant');
     }
 }

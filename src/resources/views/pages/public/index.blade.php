@@ -15,9 +15,37 @@
         <h1 class="mb-4 text-2xl font-extrabold sm:text-4xl text-center">
             Payshare
         </h1>
+
+        <div class="flex justify-between mb-2">
+            <h2 class="text-xl font-semibold">PayShare Groups</h2>
+            <a href="{{ route('payshare.groups.create') }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add group</a>
+        </div>
+        
+
+        <div class="relative overflow-x-auto rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($groups as $group)
+                    <tr class="go-to-url cursor-pointer bg-white border-b" data-url="{{ route('payshare.groups.view', ['id' => $group->id]) }}">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            {{ $group->name }}
+                        </th>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection
 
 @section('scripts')
+    @include('payshare::includes.scripts.go-to-url')
 @endsection
