@@ -33,11 +33,11 @@
                 </thead>
                 <tbody>
                     @foreach($groups as $group)
-                    <tr class="go-to-url cursor-pointer bg-white border-b" data-url="{{ route('payshare.groups.view', ['id' => $group->id]) }}">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            {{ $group->name }}
-                        </th>
-                    </tr>
+                        <tr class="go-to-url cursor-pointer bg-white border-b" data-url="{{ route('payshare.groups.view', ['id' => $group->id]) }}">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                {{ $group->name }}
+                            </th>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
