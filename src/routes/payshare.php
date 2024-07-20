@@ -22,8 +22,8 @@ Route::post('projects/payshare/groups/members/delete', [MembersController::class
 
 Route::get('projects/payshare/groups/{group_id}/payments/create', [PaymentsController::class, 'create'])->name('payshare.payments.create');
 Route::get('projects/payshare/groups/{group_id}/payments/edit/{payment_id}', [PaymentsController::class, 'edit'])->name('payshare.payments.edit');
-Route::post('projects/payshare/groups/{group_id}/payments/store', [PaymentsController::class, 'store'])->name('payshare.payments.store');
-Route::post('projects/payshare/groups/{group_id}/payments/delete', [PaymentsController::class, 'delete'])->name('payshare.payments.delete');
+Route::post('projects/payshare/groups/payments/store', [PaymentsController::class, 'store'])->name('payshare.payments.store');
+Route::post('projects/payshare/groups/payments/delete', [PaymentsController::class, 'delete'])->name('payshare.payments.delete');
 
 
 Route::group(['middleware' => ['web', 'auth']], function () {

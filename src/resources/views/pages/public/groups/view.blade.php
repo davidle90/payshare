@@ -50,7 +50,7 @@
                 <tbody>
                     @foreach($payments as $payment)
                         <tr class="cursor-pointer bg-white border-b go-to-url" data-url="{{ route('payshare.payments.edit', ['group_id' => $group->id, 'payment_id' => $payment->id]) }}">
-                            <td class="px-6 py-4">{{ \Carbon\Carbon::parse($payment->date)->format('d M') }}</td>
+                            <td class="px-6 py-4">{{ \Carbon\Carbon::parse($payment->created_at)->format('d M') }}</td>
                             <td class="px-6 py-4">{{ $payment->label }}</td>
                             <td class="px-6 py-4">
                                 @foreach($payment->contributors as $contributor)
@@ -85,7 +85,7 @@
                             <th class="px-6 py-4 text-xs text-gray-700 uppercase bg-gray-50">from {{ $from }}</th>
                             @foreach($debts[$from] as $to => $amount)
                                 <td>
-                                    {{ $amount }} kr
+                                    {{ number_format($amount, 2, '.', ' ') }} kr
                                 </td>
                             @endforeach
                         </tr>
@@ -102,7 +102,7 @@
                     <ul>
                         @foreach($to as $m => $amount)
                             <li>
-                                {{ $m }}: <span class="@if($amount < 0) text-red-600 @else text-green-600 @endif">{{ $amount }} kr</span>
+                                {{ $m }}: <span class="@if($amount < 0) text-red-600 @else text-green-600 @endif">{{ number_format($amount, 2, '.', ' ') }} kr</span>
                             </li>
                         @endforeach
                     </ul>

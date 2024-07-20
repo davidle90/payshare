@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('group_id')->constrained()->onDelete('cascade');
             $table->string('label');
             $table->decimal('total', 8, 2);
-            $table->date('date');
             $table->timestamps();
         });
     }
