@@ -13,9 +13,9 @@
 <div class="container mx-auto">
     <div class="w-4/5 mx-auto py-12 my-5">
 
-        <h2 class="text-2xl font-semibold text-center mb-5">{{ $group->name }}</h2>
        
-        <div class="flex justify-end mb-5">
+        <div class="flex justify-between mb-5">
+            <h2 class="text-2xl font-semibold">{{ $group->name }}</h2>
             <div>
                 <span class="font-semibold">Members</span>
                 <ul class="text-sm">
@@ -101,9 +101,11 @@
                     <span>{{ $from }}</span>
                     <ul>
                         @foreach($to as $m => $amount)
-                            <li>
-                                {{ $m }}: <span class="@if($amount < 0) text-red-600 @else text-green-600 @endif">{{ number_format($amount, 2, '.', ' ') }} kr</span>
-                            </li>
+                            @if($amount != 0)
+                                <li>
+                                    {{ $m }}: <span class="@if($amount < 0) text-red-600 @else text-green-600 @endif">{{ number_format($amount, 2, '.', ' ') }} kr</span>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>
