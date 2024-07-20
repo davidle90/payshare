@@ -65,7 +65,17 @@ class PaymentsController extends Controller
             $payment->total = 0;
             $payment->save();
 
-            foreach($input['contributors']['member_ids'] as $member_id){
+            $contributor_ids = $input['contributors']['member_ids'];
+
+            $p_contributors = Contributor::where('payment_id', $payment->id)->get();
+
+            foreach($p_contributors as $p_contributor){
+                if(!in_array($p_contributor->id, $contributor_ids)){
+                    $p_contributor->delete();
+                }
+            }
+
+            foreach($contributor_ids as $member_id){
                 $contributor = Contributor::firstOrNew(['member_id' => $member_id, 'payment_id' => $payment->id]);
                 $contributor->amount = $input['contributors'][$member_id]['amount'];
                 $contributor->save();
