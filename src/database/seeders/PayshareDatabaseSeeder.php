@@ -25,10 +25,10 @@ class PayshareDatabaseSeeder extends Seeder
         $member2 = Member::create(['name' => 'Marcus', 'group_id' => $group->id]);
         $member3 = Member::create(['name' => 'Nicholas', 'group_id' => $group->id]);
 
-        $payment1 = Payment::create(['label' => 'Train Tickets', 'date' => '2023-06-21', 'total' => 240, 'group_id' => $group->id]);
-        $payment2 = Payment::create(['label' => 'Sushi', 'date' => '2023-06-12', 'total' => 330, 'group_id' => $group->id]);
-        $payment3 = Payment::create(['label' => 'Petrol', 'date' => '2023-06-16', 'total' => 420, 'group_id' => $group->id]);
-        $payment4 = Payment::create(['label' => 'Bowling', 'date' => '2023-06-14', 'total' => 180, 'group_id' => $group->id]);
+        $payment1 = Payment::create(['label' => 'Train Tickets', 'created_at' => '2023-06-21', 'total' => 240, 'group_id' => $group->id]);
+        $payment2 = Payment::create(['label' => 'Sushi', 'created_at' => '2023-06-12', 'total' => 330, 'group_id' => $group->id]);
+        $payment3 = Payment::create(['label' => 'Petrol', 'created_at' => '2023-06-16', 'total' => 420, 'group_id' => $group->id]);
+        $payment4 = Payment::create(['label' => 'Bowling', 'created_at' => '2023-06-14', 'total' => 180, 'group_id' => $group->id]);
 
         // Attach participants to payments
         $payment1->participants()->attach([$member1->id, $member2->id, $member3->id]);

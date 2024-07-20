@@ -50,7 +50,7 @@
                 <tbody>
                     @foreach($payments as $payment)
                         <tr class="cursor-pointer bg-white border-b go-to-url" data-url="{{ route('payshare.payments.edit', ['group_id' => $group->id, 'payment_id' => $payment->id]) }}">
-                            <td class="px-6 py-4">{{ \Carbon\Carbon::parse($payment->date)->format('d M') }}</td>
+                            <td class="px-6 py-4">{{ \Carbon\Carbon::parse($payment->created_at)->format('d M') }}</td>
                             <td class="px-6 py-4">{{ $payment->label }}</td>
                             <td class="px-6 py-4">
                                 @foreach($payment->contributors as $contributor)

@@ -23,14 +23,21 @@ class PaymentsController extends Controller
     {
         $payment = Payment::find($payment_id);
         $group = Group::find($group_id);
-        $contributor_ids = $payment->contributors->pluck('id')->toArray();
+        $contributor_ids = $payment->contributors->pluck('member_id')->toArray();
         $participant_ids = $payment->participants->pluck('id')->toArray();
+
+        $contributors = [];
+
+        foreach($payment->contributors as $contributor){
+            $contributors[$contributor->member_id]['amount'] = $contributor->amount ?? 0;
+        }
 
         return view('payshare::pages.public.payments.edit', [
             'group' => $group,
             'payment' => $payment,
             'contributor_ids' => $contributor_ids,
-            'participant_ids' => $participant_ids
+            'participant_ids' => $participant_ids,
+            'contributors' => $contributors
         ]);
     }
 
@@ -55,7 +62,6 @@ class PaymentsController extends Controller
             $payment = Payment::firstOrNew(['id' => $input['id']]);
             $payment->label = $input['label'];
             $payment->group_id = $input['group_id'];
-            $payment->date = now();
             $payment->total = 0;
             $payment->save();
 

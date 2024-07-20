@@ -33,14 +33,14 @@
                     <label for="label" class="block mb-2 text-sm font-medium text-gray-200">Label</label>
                     <input type="text" id="label" name="label" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" value="{{ $payment->label ?? '' }}">
                 </div>
-
+                
                 <div class="mb-5">
                     <label for="contributors" class="block mb-2 text-sm font-medium text-gray-200">Contributors</label>
                     @foreach($group->members as $member)
                         <div class="flex items-center mb-4">
                             <input id="contributor-{{ $member->id }}" type="checkbox" @if(isset($payment) && in_array($member->id, $contributor_ids)) checked @endif name="contributors[member_ids][]" value="{{ $member->id }}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
                             <label for="contributor-{{ $member->id }}" class="ms-2 text-sm font-medium text-gray-200">{{ $member->name }}</label>
-                            <input type="number" id="amount-{{ $member->id }}" name="contributors[{{ $member->id }}][amount]" min="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-50 p-1 ml-2" value="0">
+                            <input type="number" id="amount-{{ $member->id }}" name="contributors[{{ $member->id }}][amount]" min="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-50 p-1 ml-2" value="{{ isset($payment) && array_key_exists($member->id, $contributors) ? $contributors[$member->id]['amount'] ?? 0 : 0 }}">
                         </div>
                     @endforeach
                 </div>

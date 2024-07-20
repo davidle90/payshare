@@ -13,7 +13,7 @@ class GroupsController extends Controller
         $group = Group::find($id);
 
         $members = $group->members;
-        $payments = $group->payments()->with(['contributors', 'participants'])->orderBy('date', 'desc')->get();
+        $payments = $group->payments()->with(['contributors', 'participants'])->orderBy('created_at', 'desc')->get();
         $debts = [];
         $balance = [];
 

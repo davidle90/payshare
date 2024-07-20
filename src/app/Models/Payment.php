@@ -13,13 +13,11 @@ class Payment extends Model
         'group_id',
         'label',
         'total',
-        'date'
     ];
 
     protected $dates = [
         'created_at',
         'updated_at',
-        'date'
     ];
 
     public function group()
