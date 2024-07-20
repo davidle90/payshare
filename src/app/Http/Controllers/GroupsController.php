@@ -115,6 +115,13 @@ class GroupsController extends Controller
         $id = $request->get('delete_id');
         $group = Group::find($id);
 
+        foreach($group->payments as $payment){
+            $payment->contributors()->delete();
+            $payment->participants()->detach();
+            $payment->delete();
+        }
+        
+        $group->members()->delete();
         $group->delete();
 
         return response()->json([
