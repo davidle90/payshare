@@ -18,7 +18,7 @@
 @section('content')
     <div class="container mx-auto">
         <div class="w-4/5 mx-auto py-12 my-5">
-            <h1 class="text-center">@if(isset($group)) {{ $group->name }} @else Create @endif</h1>
+            <h1 class="text-center mb-5">@if(isset($group)) {{ $group->name }} @else Create @endif</h1>
 
             <a href="{{ route('payshare.index') }}" class="border px-3 py-1"><i class="fa-solid fa-arrow-left mb-5"></i> Back</a>
 

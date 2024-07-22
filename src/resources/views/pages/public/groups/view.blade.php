@@ -54,7 +54,7 @@
                             <td class="px-6 py-4">{{ $payment->label }}</td>
                             <td class="px-6 py-4">
                                 @foreach($payment->contributors as $contributor)
-                                    {{ $contributor->member->name }} {{ $contributor->amount }} kr
+                                    {{ $contributor->member->name }} {{ $contributor->amount }}
                                 @endforeach
                             </td>
                             <td class="px-6 py-4">
@@ -62,7 +62,7 @@
                                     {{ $participant->name }} &nbsp;
                                 @endforeach
                             </td>
-                            <td class="px-6 py-4">{{ $payment->total }} kr</td>
+                            <td class="px-6 py-4">{{ $payment->total }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -85,7 +85,7 @@
                             <th class="px-6 py-4 text-xs text-gray-700 uppercase bg-gray-50">from {{ $from }}</th>
                             @foreach($debts[$from] as $to => $amount)
                                 <td>
-                                    {{ number_format($amount, 2, '.', ' ') }} kr
+                                    {{ number_format($amount, 2, '.', ' ') }}
                                 </td>
                             @endforeach
                         </tr>
@@ -94,22 +94,41 @@
             </table>
         </div>
         
-        <div class="mt-5">
-            <div class="mb-2">Balance</div>
-            @foreach($balance as $from => $to)
+        <div class="flex justify-between mt-5">
+            <div>
+                <div class="mb-2">Balance</div>
+                @foreach($balance as $from => $to)
+                    <div class="mb-2">
+                        <span>{{ $from }}</span>
+                        <ul>
+                            @foreach($to as $m => $amount)
+                                @if($amount != 0)
+                                    <li>
+                                        {{ $m }}: <span class="@if($amount < 0) text-red-600 @else text-green-600 @endif">{{ number_format($amount, 2, '.', ' ') }}</span>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                @endforeach
+            </div>
+            <div>
+                <div class="mb-2">Currency Converter</div>
                 <div class="mb-2">
-                    <span>{{ $from }}</span>
-                    <ul>
-                        @foreach($to as $m => $amount)
-                            @if($amount != 0)
-                                <li>
-                                    {{ $m }}: <span class="@if($amount < 0) text-red-600 @else text-green-600 @endif">{{ number_format($amount, 2, '.', ' ') }} kr</span>
-                                </li>
-                            @endif
-                        @endforeach
-                    </ul>
+                    <label for="currency_1">From:</label>
+                    <input type="number" id="currency_1" name="currency_1" />
                 </div>
-            @endforeach
+                <div class="mb-2">
+                    <label for="currency_2">To:</label>
+                    <input type="number" id="currency_2" name="currency_2" />
+                </div>
+                <div class="mb-2">
+                    <span>Result:</span>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
