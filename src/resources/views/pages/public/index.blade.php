@@ -16,8 +16,7 @@
             PayShare
         </h1>
 
-        <div class="flex justify-between mb-2">
-            <a href="{{ route('index') }}" class="border px-3 py-1"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <div class="mb-3">
             <a href="{{ route('payshare.groups.create') }}" class="border px-3 py-1"><i class="fa-solid fa-plus"></i> Add group</a>
         </div>
         
