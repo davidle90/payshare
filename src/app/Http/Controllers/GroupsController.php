@@ -94,7 +94,7 @@ class GroupsController extends Controller
             $response = [
                 'status' => 1,
                 'message' => 'Group has been saved.',
-                'redirect' => route('payshare.groups.edit', ['id' => $group->id])
+                'redirect' => route('payshare.groups.view', ['id' => $group->id])
             ];
 
         } catch(Exception $e) {

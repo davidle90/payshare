@@ -1,5 +1,6 @@
 <?php
 
+use Davidle90\Payshare\app\Http\Controllers\Api\ExchangeRateApiController;
 use Davidle90\Payshare\app\Http\Controllers\PayshareController;
 use Davidle90\Payshare\app\Http\Controllers\GroupsController;
 use Davidle90\Payshare\app\Http\Controllers\MembersController;
@@ -25,6 +26,8 @@ Route::get('projects/payshare/groups/{group_id}/payments/edit/{payment_id}', [Pa
 Route::post('projects/payshare/groups/payments/store', [PaymentsController::class, 'store'])->name('payshare.payments.store');
 Route::post('projects/payshare/groups/payments/delete', [PaymentsController::class, 'delete'])->name('payshare.payments.delete');
 
+// API
+Route::post('projects/payshare/exchangerate_api/convert', [ExchangeRateApiController::class, 'convert'])->name('payshare.exchangerateapi.convert');
 
 Route::group(['middleware' => ['web', 'auth']], function () {
 

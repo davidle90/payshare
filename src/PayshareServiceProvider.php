@@ -2,6 +2,7 @@
 
 namespace davidle90\payshare;
 
+use Davidle90\Payshare\App\Console\Commands\ClearDemoData;
 use Illuminate\Support\ServiceProvider;
 
 class PayshareServiceProvider extends ServiceProvider
@@ -26,12 +27,13 @@ class PayshareServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/routes/payshare.php');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'payshare');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->mergeConfigFrom(__DIR__.'/config/payshare.php', 'payshare');
 
         // Register command
-        //if($this->app->runningInConsole()){
-        //    $this->command([
-        //        DoSomething::class
-        //    ]);
-        //}
+        if($this->app->runningInConsole()){
+            $this->commands([
+                ClearDemoData::class
+            ]);
+        }
     }
 }
