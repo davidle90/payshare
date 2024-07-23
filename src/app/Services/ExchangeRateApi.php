@@ -27,7 +27,6 @@ class ExchangeRateApi
             ]);
 
             $data = json_decode($response->getBody(), true);
-            dd($data);
 
             return $data;
 

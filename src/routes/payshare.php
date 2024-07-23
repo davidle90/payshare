@@ -27,7 +27,7 @@ Route::post('projects/payshare/groups/payments/store', [PaymentsController::clas
 Route::post('projects/payshare/groups/payments/delete', [PaymentsController::class, 'delete'])->name('payshare.payments.delete');
 
 // API
-Route::get('projects/payshare/exchangerate_api/convert', [ExchangeRateApiController::class, 'convert'])->name('payshare.exchangerateapi.convert');
+Route::post('projects/payshare/exchangerate_api/convert', [ExchangeRateApiController::class, 'convert'])->name('payshare.exchangerateapi.convert');
 
 Route::group(['middleware' => ['web', 'auth']], function () {
 
