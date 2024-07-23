@@ -112,20 +112,56 @@
                     </div>
                 @endforeach
             </div>
+
             <div>
                 <div class="mb-2">Currency Converter</div>
+                
                 <div class="mb-2">
-                    <label for="currency_1">From:</label>
-                    <input type="number" id="currency_1" name="currency_1" />
+                    <label for="from_currency">From</label>
+                    <div>
+                        <select class="text-gray-800" name="from_currency" id="from_currency">
+                            <option value="SEK" selected>SEK</option>
+                            <option value="SEK">EUR</option>
+                            <option value="SEK">USD</option>
+                            <option value="SEK">DDK</option>
+                            <option value="SEK">NOK</option>
+                            <option value="SEK">JPY</option>
+                            <option value="SEK">KRW</option>
+                            <option value="SEK">THB</option>
+                        </select>
+                    </div>
+                    
                 </div>
+
                 <div class="mb-2">
-                    <label for="currency_2">To:</label>
-                    <input type="number" id="currency_2" name="currency_2" />
+                    <label for="to_currency">To</label>
+                    <div>
+                        <select class="text-gray-800" name="to_currency" id="to_currency">
+                            <option value="SEK">SEK</option>
+                            <option value="SEK" selected>EUR</option>
+                            <option value="SEK">USD</option>
+                            <option value="SEK">DDK</option>
+                            <option value="SEK">NOK</option>
+                            <option value="SEK">JPY</option>
+                            <option value="SEK">KRW</option>
+                            <option value="SEK">THB</option>
+                        </select>
+                    </div>
                 </div>
+                
                 <div class="mb-2">
+                    <label for="amount">Amount:</label>
+                    <div>
+                        <input type="number" id="amount" name="amount" />
+                    </div>
+                </div>
+
+                <button type="button" class="px-3 py-2 border bg-orange-600">Convert</button>
+
+                <div class="my-2">
                     <span>Result:</span>
                     <div>
-                        
+                        <span class="conversion_result"></span>
                     </div>
                 </div>
             </div>
